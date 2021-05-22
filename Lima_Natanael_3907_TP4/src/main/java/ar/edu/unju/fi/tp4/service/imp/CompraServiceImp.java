@@ -1,6 +1,7 @@
 package ar.edu.unju.fi.tp4.service.imp;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -34,6 +35,18 @@ public class CompraServiceImp implements ICompraService{
 	public List<Compra> obtenerCompras() {
 		
 		return compraList;
+	}
+
+	@Override
+	public void eliminarCompra(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Optional<Compra> buscarCompra(int ind) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 

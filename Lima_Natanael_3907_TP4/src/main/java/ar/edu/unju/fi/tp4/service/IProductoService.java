@@ -1,6 +1,7 @@
 package ar.edu.unju.fi.tp4.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import ar.edu.unju.fi.tp4.model.Producto;
 
@@ -20,4 +21,6 @@ public interface IProductoService {
 	public Producto obtenerList();
 	
 	public Producto mostrarUltimoProducto();
+	public void eliminarProducto(int id);
+	public Optional<Producto> buscarProducto(int id);
 }

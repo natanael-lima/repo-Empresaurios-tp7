@@ -1,6 +1,8 @@
 package ar.edu.unju.fi.tp4.service.imp;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +10,7 @@ import org.springframework.stereotype.Service;
 import ar.edu.unju.fi.tp4.model.Producto;
 import ar.edu.unju.fi.tp4.service.IProductoService;
 
-@Service
+@Service("tableProductos")
 public class ProductoServiceImp implements IProductoService {
 	
 	private static final Log LOGGER = LogFactory.getLog(ProductoServiceImp.class);
@@ -46,6 +48,16 @@ public class ProductoServiceImp implements IProductoService {
  		return productoList.get(productoList.size()-1);
  		
  	}
+	@Override
+	public void eliminarProducto(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public Optional<Producto> buscarProducto(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
      
 
 }
