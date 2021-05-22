@@ -2,6 +2,7 @@ package ar.edu.unju.fi.tp4.service.imp;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -36,9 +37,21 @@ public class ClienteServiceImp implements IClienteService{
 	}
 
 	@Override
-	public List<Cliente> obtenerCliente() {
+	public List<Cliente> obtenerClientes() {
 		// TODO Auto-generated method stub
 		return clienteList;
+	}
+
+	@Override
+	public void eliminarCliente(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Optional<Cliente> buscarCliente(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

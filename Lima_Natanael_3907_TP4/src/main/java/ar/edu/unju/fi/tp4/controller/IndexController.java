@@ -84,7 +84,7 @@ public class IndexController {
 	public ModelAndView getProcesoGuardar(@ModelAttribute("cliente") Cliente cliente ) {
 		ModelAndView model = new ModelAndView("index");
 		clienteService.agregarCliente(cliente);
-		model.addObject("clientes",clienteService.obtenerCliente());
+		model.addObject("clientes",clienteService.obtenerClientes());
 		return model;
 	}
 	
@@ -92,11 +92,11 @@ public class IndexController {
 	 public ModelAndView getProcesoListado() {
 		 ModelAndView model = new ModelAndView("mostrarclientes");
 		
-		if(clienteService.obtenerCliente() == null) {
+		if(clienteService.obtenerClientes() == null) {
 			 clienteService.generarList();
 		}
 		
-		model.addObject("clientes",clienteService.obtenerCliente());
+		model.addObject("clientes",clienteService.obtenerClientes());
 		return model;
    	}
 	 

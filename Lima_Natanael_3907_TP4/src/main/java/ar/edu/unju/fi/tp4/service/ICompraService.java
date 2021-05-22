@@ -1,6 +1,7 @@
 package ar.edu.unju.fi.tp4.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import ar.edu.unju.fi.tp4.model.Compra;
 
@@ -14,5 +15,7 @@ public interface ICompraService {
 	
 	public List<Compra> obtenerCompras();
 	
+	public void eliminarCompra(int id);
 	
+	public Optional<Compra> buscarCompra(int id);
 }
