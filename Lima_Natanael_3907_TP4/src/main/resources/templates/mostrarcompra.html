@@ -34,7 +34,8 @@
 		              <td th:text="${c.producto}"></td>
 		              <td th:text="${c.cantidad}"></td>
 		              <td th:text="${c.total}"></td>
-				  
+				      <td><a href="@{/index/modificarCompra/}+${c.id}" class="btn btn-light my-2">Editar</a></td>
+		              <td><a href="@{/index/eliminarCompra/}+${c.id}" class="btn btn-light my-2">Eliminar</a></td>
 				  </tbody>
 				</table>
 		 </div>	

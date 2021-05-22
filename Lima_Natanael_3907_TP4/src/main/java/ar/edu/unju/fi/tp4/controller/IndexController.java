@@ -178,7 +178,7 @@ public class IndexController {
 					 return model;
 			  	}
 				 
-				@GetMapping("/index/modificarCompra/{id}")
+				@GetMapping("/index/modificarProducto/{id}")
 				 public ModelAndView getModificarProducto(@PathVariable(value="id") int param) {
 					 ModelAndView model = new ModelAndView("nuevoprod");
 					 Optional<Producto> prod = productoService.buscarProducto(param);
