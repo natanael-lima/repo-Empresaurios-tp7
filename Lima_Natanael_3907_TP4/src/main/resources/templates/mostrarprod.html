@@ -30,8 +30,7 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr>
-				      <th scope="row">1</th>
+				    <tr  th:each="prod : ${prod}">
 				      <td><span th:text="${prod.getCodigo}"></span></td>
 				      <td><span th:text="${prod.getNombre}"></span></td>
 				      <td><span th:text="${prod.getPrecio}"></span></td>
