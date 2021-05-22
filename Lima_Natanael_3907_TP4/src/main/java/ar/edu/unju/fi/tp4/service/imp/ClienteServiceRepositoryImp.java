@@ -10,7 +10,7 @@ import ar.edu.unju.fi.repository.IClienteRepository;
 import ar.edu.unju.fi.tp4.model.Cliente;
 import ar.edu.unju.fi.tp4.service.IClienteService;
 
-@Service("tableServiceRepository")
+@Service("tableClienteRepository")
 public class ClienteServiceRepositoryImp implements IClienteService{
     
 	@Autowired
