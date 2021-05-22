@@ -36,6 +36,8 @@
 				      <td><span th:text="${prod.getPrecio}"></span></td>
 				      <td><span th:text="${prod.getMarca}"></span></td>
 				      <td><span th:text="${prod.getStock}"></span></td>
+				      <td><a href="@{/index/modificarProducto/}+${prod.id}" class="btn btn-light my-2">Editar</a></td>
+		               <td><a href="@{/index/eliminarProducto/}+${prod.id}" class="btn btn-light my-2">Eliminar</a></td>
 				    </tr>
 
 				  </tbody>
