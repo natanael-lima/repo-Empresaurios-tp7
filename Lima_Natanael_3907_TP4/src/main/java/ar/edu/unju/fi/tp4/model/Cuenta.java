@@ -12,6 +12,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -26,9 +27,10 @@ public class Cuenta {
 	@Column(name = "cuenta_saldo")
 	private double saldo;
 	@Column(name = "cuenta_fechaCreacion")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate fechaCreacion;
 	@Column(name = "cuenta_estado")
-	private String estado; //ACTIVA, INACTIVA
+	private String estado; //ACTIVA, INACTIVA 
 	
 	@Autowired
 	@OneToOne(mappedBy = "cuenta",fetch = FetchType.LAZY)

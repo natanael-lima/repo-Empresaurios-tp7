@@ -12,7 +12,7 @@ import ar.edu.unju.fi.tp4.service.ICompraService;
 
 @Service("tableCompraRepository")
 public class CompraServiceRepositoryImp implements ICompraService{
-	@Autowired
+	
 	private ICompraRepository compraRepository;
 
 	@Override

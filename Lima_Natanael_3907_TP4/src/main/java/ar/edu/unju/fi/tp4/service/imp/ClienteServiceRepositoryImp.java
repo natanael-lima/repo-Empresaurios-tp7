@@ -13,16 +13,17 @@ import ar.edu.unju.fi.tp4.service.IClienteService;
 @Service("tableClienteRepository")
 public class ClienteServiceRepositoryImp implements IClienteService{
     
-	@Autowired
-	private IClienteRepository clienteRepository;
 	
+	private IClienteRepository clienteRepository;
+	@Autowired
+	private Cliente cliente;
 	@Override
 	public void generarList() {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	@Override	
 	public void agregarCliente(Cliente cliente) {
 		clienteRepository.save(cliente);
 	}
@@ -34,12 +35,12 @@ public class ClienteServiceRepositoryImp implements IClienteService{
 	}
 
 	@Override
-	public void eliminarCliente(int id) {
+	public void eliminarCliente(long id) {
 		clienteRepository.deleteById(id);
 	
 	}
 	@Override
-	public Optional<Cliente> buscarCliente(int id){
+	public Optional<Cliente> buscarCliente(long id){
 		return clienteRepository.findById(id);
 	}
 

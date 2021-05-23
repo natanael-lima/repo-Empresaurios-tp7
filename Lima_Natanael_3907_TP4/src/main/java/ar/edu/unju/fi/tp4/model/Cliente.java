@@ -30,7 +30,7 @@ public class Cliente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cli_codigo")
-	private int codigo;
+	private long codigo;
 	@Column(name = "cli_tipoDocumento")
 	private String tipoDocumento;
 	@Column(name = "cli_nroDocumento")
@@ -59,6 +59,16 @@ public class Cliente {
 	@JoinColumn(name = "cuenta_id")
 	private Cuenta cuenta;
 	
+	public Cuenta getCuenta() {
+		return cuenta;
+	}
+
+
+	public void setCuenta(Cuenta cuenta) {
+		this.cuenta = cuenta;
+	}
+
+
 	public Cliente() {
 		
 	}
@@ -81,12 +91,12 @@ public class Cliente {
 
 	
 
-	public int getCodigo() {
+	public long getCodigo() {
 		return codigo;
 	}
 
 
-	public void setCodigo(int codigo) {
+	public void setCodigo(long codigo) {
 		this.codigo = codigo;
 	}
 

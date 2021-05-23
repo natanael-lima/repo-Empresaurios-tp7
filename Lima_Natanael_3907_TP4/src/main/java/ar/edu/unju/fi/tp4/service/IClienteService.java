@@ -22,7 +22,7 @@ public interface IClienteService {
     */
     public List<Cliente> obtenerClientes();
    
-    public void eliminarCliente(int id);
+    public void eliminarCliente(long id);
     
-    public Optional<Cliente> buscarCliente(int id);
+    public Optional<Cliente> buscarCliente(long id);
 }

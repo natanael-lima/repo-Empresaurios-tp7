@@ -43,13 +43,13 @@ public class ClienteServiceImp implements IClienteService{
 	}
 
 	@Override
-	public void eliminarCliente(int id) {
+	public void eliminarCliente(long id) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public Optional<Cliente> buscarCliente(int id) {
+	public Optional<Cliente> buscarCliente(long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

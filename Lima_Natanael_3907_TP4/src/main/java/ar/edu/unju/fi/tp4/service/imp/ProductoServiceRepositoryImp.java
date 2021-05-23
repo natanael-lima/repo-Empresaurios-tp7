@@ -10,6 +10,7 @@ import ar.edu.unju.fi.tp4.model.Producto;
 import ar.edu.unju.fi.tp4.service.IProductoService;
 @Service("tableProductoRepository")
 public class ProductoServiceRepositoryImp implements IProductoService{
+	
     private IProductoRepository productoRepository;
 	
 	@Override
