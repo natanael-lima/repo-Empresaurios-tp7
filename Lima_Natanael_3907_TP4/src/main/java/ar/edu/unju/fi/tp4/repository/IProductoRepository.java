@@ -1,4 +1,4 @@
-package ar.edu.unju.fi.repository;
+package ar.edu.unju.fi.tp4.repository;
 
 import org.springframework.data.repository.CrudRepository;
 

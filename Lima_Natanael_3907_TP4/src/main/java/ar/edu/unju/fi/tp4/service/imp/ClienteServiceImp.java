@@ -28,7 +28,6 @@ public class ClienteServiceImp implements IClienteService{
 		// TODO Auto-generated method stub
 		LOGGER.info("SERVICE: IClienteService -> ClienteServiceImp");
 		LOGGER.info("METHOD: agregarCliente()");
-		LOGGER.info("RESULT:a object cliente: "+cliente.obtenerUltimaCompra());
 		if(clienteList == null)
 			generarList();
 

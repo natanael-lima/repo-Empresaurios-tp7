@@ -26,12 +26,14 @@
 		               <th scope="col">Apellido y Nombre</th>
 		               <th scope="col">E-mail</th>
 		               <th scope="col">Nacimiento</th>
-		               <th scope="col">UltCompra</th>
-		               <th scope="col">Edad</th>
+		               
 		               <th scope="col">Telefono</th>
-		               <th scope="col">TimeCompra</th>
-		               <th scope="col">TimeNacimiento</th>
-		               <th scope="col">TimeCumple</th>
+		               
+		               <th scope="col">IDCuenta</th>
+		               <th scope="col">Saldo</th>
+		               <th scope="col">Estado</th>
+		               <th scope="col">FechaCreacion</th>
+		               
 				    </tr>
 				  </thead>
 				  <tbody>
@@ -41,14 +43,15 @@
 		              <td th:text="${cli.nombreApellido}"></td>
 		              <td th:text="${cli.mail}"></td>
 		              <td th:text="${#temporals.format(cli.fechaNacimiento,'dd/MM/yyyy')}"></td>
-		              <td th:text="${#temporals.format(cli.fechaUltimaCompra,'dd/MM/yyyy')}"></td>
-		              <td th:text="${cli.getEdad}"></td>
+		       
 		              <td th:text="${cli.codigoAreaTelefono} + '-' + ${cli.nroTelefono}"></td>
-		              <td th:text="${cli.obtenerUltimaCompra}"></td>
-		              <td th:text="${cli.obtenerFechaNacimiento}"></td>
-		               <td th:text="${cli.obtenerCumpleanio}"></td>
-		               <td><a href="@{/index/modificar/}+${cli.id}" class="btn btn-light my-2">Editar</a></td>
-		               <td><a href="@{/index/eliminar/}+${cli.id}" class="btn btn-light my-2">Eliminar</a></td> 
+		              
+		             
+		            
+		          
+		              
+		               <td><a th:href="@{/index/modificar/}+${cli.codigo}" class="btn btn-light my-2">Editar</a></td>
+		               <td><a th:href="@{/index/eliminar/}+${cli.codigo}" class="btn btn-light my-2">Eliminar</a></td> 
 				    </tr>
 				  
 				  </tbody>

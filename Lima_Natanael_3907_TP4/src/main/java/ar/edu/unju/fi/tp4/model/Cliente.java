@@ -44,15 +44,12 @@ public class Cliente {
 	@Column(name = "cli_fechaNacimiento")
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate fechaNacimiento;
-	@Column(name = "cli_edad")
-	private int edad;
+
 	@Column(name = "cli_codigoAreaTelefono")
 	private int codigoAreaTelefono;
 	@Column(name = "cli_nroTelefono")
 	private int nroTelefono;
-	@Column(name = "cli_fechaUltimaCompra")
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private LocalDate fechaUltimaCompra;
+
 	
 	@Autowired
 	@OneToOne(cascade=CascadeType.ALL)
@@ -75,7 +72,7 @@ public class Cliente {
 
 
 	public Cliente(String tipoDocumento, int nroDocumento, String nombreApellido, String mail, String password,
-			LocalDate fechaNacimiento, int edad, int codigoAreaTelefono, int nroTelefono, LocalDate fechaUltimaCompra) {
+			LocalDate fechaNacimiento, int codigoAreaTelefono, int nroTelefono) {
 		super();
 		this.tipoDocumento = tipoDocumento;
 		this.nroDocumento = nroDocumento;
@@ -83,10 +80,10 @@ public class Cliente {
 		this.mail = mail;
 		this.password = password;
 		this.fechaNacimiento = fechaNacimiento;
-		this.edad = edad;
+
 		this.codigoAreaTelefono = codigoAreaTelefono;
 		this.nroTelefono = nroTelefono;
-		this.fechaUltimaCompra = fechaUltimaCompra;
+
 	}
 
 	
@@ -161,19 +158,6 @@ public class Cliente {
 	}
 
 
-	public int getEdad() {
-		LocalDate today = LocalDate.now();
-		Period per=Period.between(fechaNacimiento, today);
-		edad=per.getYears();
-		return edad;
-	}
-
-
-	public void setEdad(int edad) {
-		this.edad = edad;
-	}
-
-
 	public int getCodigoAreaTelefono() {
 		return codigoAreaTelefono;
 	}
@@ -194,89 +178,18 @@ public class Cliente {
 	}
 
 
-	public LocalDate getFechaUltimaCompra() {
-		return fechaUltimaCompra;
-	}
-
-
-	public void setFechaUltimaCompra(LocalDate fechaUltimaCompra) {
-		this.fechaUltimaCompra = fechaUltimaCompra;
-	}
-
-
 	@Override
 	public String toString() {
-		return "Cliente [tipoDocumento=" + tipoDocumento + ", nroDocumento=" + nroDocumento + ", nombreApellido="
-				+ nombreApellido + ", mail=" + mail + ", password=" + password + ", fechaNacimiento=" + fechaNacimiento
-				+ ", edad=" + edad + ", codigoAreaTelefono=" + codigoAreaTelefono + ", nroTelefono=" + nroTelefono
-				+ ", fechaUltimaCompra=" + fechaUltimaCompra + "]";
+		return "Cliente [codigo=" + codigo + ", tipoDocumento=" + tipoDocumento + ", nroDocumento=" + nroDocumento
+				+ ", nombreApellido=" + nombreApellido + ", mail=" + mail + ", password=" + password
+				+ ", fechaNacimiento=" + fechaNacimiento + ", codigoAreaTelefono=" + codigoAreaTelefono
+				+ ", nroTelefono=" + nroTelefono + ", cuenta=" + cuenta + "]";
 	}
 
-   /**
-    * 
-    Obtiene tiempo desde la ultima fecha de compra
-    */
+
+
+
 	
-    public String obtenerUltimaCompra() {
-    	String fecha="";
-		LocalDate today = LocalDate.now();
-		Period per =Period.between(fechaUltimaCompra, today);
-		fecha="Anios: "+per.getYears()+'|'+" Meses: "+per.getMonths()+'|'+" Dias: "+per.getDays();
-		return fecha;
-    }
-	/**
-	 * Obtiene dias transcurridos
-	 * @return
-	 */
-    
-    public int obtenerFechaNacimiento() {
-    	
-    	// Usando ChronoUnit
-    	LocalDate today = LocalDate.now();
-        int dias = (int) DAYS.between(fechaNacimiento, today); 	
-    	return dias;
-    }
-    /**
-     * Obtiene tiempo para proximo cummpleaños
-     * @return
-     */
-	
-     public String obtenerCumpleanio() {
-		
-		String fecha="";
-		
-		LocalDate hoy = LocalDate.now();
-		int anio = 0;
-		
-		if(hoy.getMonthValue()<fechaNacimiento.getMonthValue()) {
-			anio=hoy.getYear();
-		}else {
-			if(hoy.getMonthValue()==fechaNacimiento.getMonthValue()) {
-				if(hoy.getDayOfMonth()<fechaNacimiento.getDayOfMonth()) {
-					anio=hoy.getYear();
-				}
-			}else {
-				anio=hoy.getYear()+1;
-			}
-		}
-		
-		
-        LocalDate proximoCumple=LocalDate.of(anio, fechaNacimiento.getMonth(), fechaNacimiento.getDayOfMonth());
-		
-	    Period periodo =Period.between(hoy, proximoCumple);
-		
-		fecha="Anios: "+periodo.getYears()+'|'+" Meses: "+periodo.getMonths()+'|'+" Dias: "+periodo.getDays();
-		
-		LocalDateTime horaHoy=LocalDateTime.now();
-		
-		LocalDateTime horasProximoCumple=LocalDateTime.of(anio, fechaNacimiento.getMonth(), fechaNacimiento.getDayOfMonth(), 0, 0, 0);
-		
-		Duration duracion=Duration.between(horaHoy, horasProximoCumple);
-		
-		fecha=fecha+'-'+" Hora: "+duracion.toHoursPart()+'|'+" Min: "+duracion.toMinutesPart()+'|'+" Seg: "+duracion.toSecondsPart();
-		
-		return fecha;
-		
-	}
+  
 	
 }

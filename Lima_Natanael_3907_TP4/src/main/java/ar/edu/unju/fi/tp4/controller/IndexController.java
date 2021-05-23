@@ -16,8 +16,11 @@ import ar.edu.unju.fi.tp4.model.Cliente;
 import ar.edu.unju.fi.tp4.model.Compra;
 import ar.edu.unju.fi.tp4.service.IClienteService;
 import ar.edu.unju.fi.tp4.service.ICompraService;
+import ar.edu.unju.fi.tp4.service.ICuentaService;
 import ar.edu.unju.fi.tp4.model.Producto;
+import ar.edu.unju.fi.tp4.repository.ICuentaRepository;
 import ar.edu.unju.fi.tp4.service.IProductoService;
+
 
 @Controller
 public class IndexController {
@@ -43,6 +46,10 @@ public class IndexController {
 	 @Autowired
 	 @Qualifier("tableProductoRepository")
 	 private IProductoService productoService;
+	 
+	 @Autowired
+	 @Qualifier("tableCuentaRepository")
+	 private ICuentaService cuentaService;
 	
 	/**
 	 * Metodo que muestra la pagina de forma static
@@ -90,6 +97,7 @@ public class IndexController {
 		ModelAndView model = new ModelAndView("mostrarclientes");
 		clienteService.agregarCliente(cliente);
 		model.addObject("clientes",clienteService.obtenerClientes());
+		model.addObject("cuentas",cuentaService.obtenerCuentas());
 		return model;
 	}
 	
@@ -147,8 +155,8 @@ public class IndexController {
 	@GetMapping("/index/modificar/{id}")
 	 public ModelAndView getModificarCliente(@PathVariable(value="id") int param) {
 		 ModelAndView model = new ModelAndView("nuevocliente");
-		 Optional<Cliente> clientes = clienteService.buscarCliente(param);
-		 model.addObject("clientes",clientes);
+		 Optional<Cliente> cliente = clienteService.buscarCliente(param);
+		 model.addObject("cliente",cliente);
 		 return model;
  	}
 	

@@ -5,8 +5,8 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import ar.edu.unju.fi.repository.IProductoRepository;
 import ar.edu.unju.fi.tp4.model.Producto;
+import ar.edu.unju.fi.tp4.repository.IProductoRepository;
 import ar.edu.unju.fi.tp4.service.IProductoService;
 @Service("tableProductoRepository")
 public class ProductoServiceRepositoryImp implements IProductoService{
