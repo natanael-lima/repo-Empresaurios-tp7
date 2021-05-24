@@ -21,7 +21,6 @@
 			    <table class="tab table table-hover table-dark ">
 				  <thead class="thead-dark">
 				    <tr>
-				      <th scope="col">#</th>
 				      <th scope="col">Codigo</th>
 				      <th scope="col">Nombre</th>
 				      <th scope="col">Precio</th>
@@ -30,14 +29,14 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr  th:each="prod : ${prod}">
-				      <td><span th:text="${prod.getCodigo}"></span></td>
-				      <td><span th:text="${prod.getNombre}"></span></td>
-				      <td><span th:text="${prod.getPrecio}"></span></td>
-				      <td><span th:text="${prod.getMarca}"></span></td>
-				      <td><span th:text="${prod.getStock}"></span></td>
-				      <td><a href="@{/index/modificarProducto/}+${prod.id}" class="btn btn-light my-2">Editar</a></td>
-		               <td><a href="@{/index/eliminarProducto/}+${prod.id}" class="btn btn-light my-2">Eliminar</a></td>
+				    <tr  th:each="pro : ${productos}">
+				      <td><span th:text="${pro.codigo}"></span></td>
+				      <td><span th:text="${pro.nombre}"></span></td>
+				      <td><span th:text="${pro.precio}"></span></td>
+				      <td><span th:text="${pro.marca}"></span></td>
+				      <td><span th:text="${pro.stock}"></span></td>
+				      <td><a th:href="@{/index/modificarProducto/}+${pro.codigo}" class="btn btn-light my-2">Editar</a></td>
+		               <td><a th:href="@{/index/eliminarProducto/}+${pro.codigo}" class="btn btn-light my-2">Eliminar</a></td>
 				    </tr>
 
 				  </tbody>

@@ -22,26 +22,25 @@
 		   <div class="col-9 sec1 " style="height: 800px;">
 			 <div id="formulario" >
 					   <form class="row g-3" th:action="@{/index/guardarCompra}" th:object="${compra}" method="POST">
-				
+				          <input type="hidden" th:field="*{id}">
+					 
+						 
 						  <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 mb-3">
-						    <label for="inputCod4" class="form-label">Ingrese ID</label>
-						    <input type="number"  th:field="*{id}" placeholder="Documento..." class="form-control" id="inputEmail4">
-						  </div>
-						  <!--  <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 mb-3">
-						    <label for="inputNombre4" class="form-label">Ingrese Producto</label>
-						    <input type="text"  th:field="*{producto}" class="form-control" id="inputAddress" placeholder="Rueda" >
-						  </div>-->
-						  <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 mb-3">
-						    <label for="mail" class="form-label">Ultimo Producto</label>
-						    <p><span th:text="${textProd}"></span><span th:text="${text}"></span></p>
+						    <label for="producto" class="form-label">Productos</label>
+						    <select id="producto" th:field="*{producto}">
+						    	<option th:each="produc: ${productos}" th:value="${produc.codigo}" th:text="${produc.nombre}" th:selected="false">
+						    </select>
 						  </div>
 						  <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 mb-3">
 						    <label for="mail" class="form-label">Ingrese Cantidad</label>
 						    <input type="number"  th:field="*{cantidad}"  class="form-control" id="inputAddress" placeholder="...">
 						  </div>
 						  <div class=" form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 mb-3">
-						    <label for="inputAddress2" class="form-label">Ingrese Total</label>
-						    <input type="number"  th:field="*{total}" class="form-control" id="inputAddress2">
+						    <label for="inputAddress2" class="form-label">El Total Se calculara al enviar el formulario</label>
+						 
+						  </div>
+						  <div class=" form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 mb-3">
+						     <p th:text="${texto}"></p>
 						  </div>
 						  <div class=" form-group col-12 mb-3">
 						    <div class="form-check">
@@ -51,6 +50,8 @@
 						      </label>
 						    </div>
 						  </div>
+						  
+						 
 						  <div class="form-group col-12"><br>
 						    <button type="submit" class="btn btn-primary">Enviar</button>
 						  </div>

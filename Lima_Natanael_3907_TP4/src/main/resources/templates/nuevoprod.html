@@ -24,10 +24,8 @@
 			 <div id="formulario">
                  
 					<form class="row g-3" th:action="@{/index/guardar}" th:object="${producto}" method="POST">
-					  <div class="col-12 col-md-6" >
-					    <label for="inputCod4" class="form-label">Codigo</label>
-					    <input type="number" name="codigo" th:field="*{codigo}"  placeholder="Ingrese Cod" class="form-control" id="inputEmail4">
-					  </div>
+					 <input type="hidden" th:field="*{codigo}">
+					   
 					  <div class="col-12 col-md-6">
 					    <label for="inputNombre4" class="form-label">Nombre</label>
 					    <input type="text" name="name"  th:field="*{nombre}" class="form-control" placeholder="Ingrese Nombre" id="inputPassword4">

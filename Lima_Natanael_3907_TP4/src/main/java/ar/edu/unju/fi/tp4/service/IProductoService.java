@@ -23,4 +23,6 @@ public interface IProductoService {
 	public Producto mostrarUltimoProducto();
 	public void eliminarProducto(int id);
 	public Optional<Producto> buscarProducto(int id);
+	
+	public Producto buscarProductoID(int id);
 }

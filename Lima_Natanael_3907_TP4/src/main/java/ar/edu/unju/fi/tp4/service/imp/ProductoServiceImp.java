@@ -58,6 +58,11 @@ public class ProductoServiceImp implements IProductoService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public Producto buscarProductoID(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
      
 
 }

@@ -28,12 +28,10 @@
 		               <th scope="col">Nacimiento</th>
 		               
 		               <th scope="col">Telefono</th>
+		               <th scope="col">CuentaSaldo</th>
+		               <th scope="col">CuentaEstado</th>
 		               
-		               <th scope="col">IDCuenta</th>
-		               <th scope="col">Saldo</th>
-		               <th scope="col">Estado</th>
-		               <th scope="col">FechaCreacion</th>
-		               
+		            
 				    </tr>
 				  </thead>
 				  <tbody>
@@ -45,6 +43,8 @@
 		              <td th:text="${#temporals.format(cli.fechaNacimiento,'dd/MM/yyyy')}"></td>
 		       
 		              <td th:text="${cli.codigoAreaTelefono} + '-' + ${cli.nroTelefono}"></td>
+		              <td th:text="${cli.cuenta.saldo}"></td>
+		              <td th:text="${cli.cuenta.estado}"></td>
 		              
 		             
 		            

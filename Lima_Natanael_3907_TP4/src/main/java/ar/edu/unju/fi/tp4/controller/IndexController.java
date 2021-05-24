@@ -70,9 +70,11 @@ public class IndexController {
 	 * Metodo de proceso de guardar producto
 	 */
 	@PostMapping("/index/guardar")
-	public String getProceso(@ModelAttribute("producto") Producto producto ) {
+	public String getProceso(@ModelAttribute("producto") Producto producto,Model model ) {
 		productoService.agregarList(producto);
-    	return "index";
+		
+		model.addAttribute("productos",productoService.obtenerListaProducto());
+    	return "mostrarprod";
 	}
 	
 	/**
@@ -80,7 +82,7 @@ public class IndexController {
 	 */
 	@GetMapping("/index/ultimo")
 	public String getProcesoUltimo( Model model ) {
-		model.addAttribute("prod",productoService.obtenerList());
+		model.addAttribute("productos",productoService.obtenerListaProducto());
     	return "mostrarprod";
 	}
 	
@@ -106,6 +108,7 @@ public class IndexController {
 		ModelAndView model = new ModelAndView("mostrarclientes");
 	
 		model.addObject("clientes",clienteService.obtenerClientes());
+		model.addObject("cuentas",cuentaService.obtenerCuentas());
 		return model;
    	}
 	 
@@ -113,24 +116,40 @@ public class IndexController {
 	
 	@GetMapping("/index/compra")
 	public String getFormCompra(Model model) {
-		String text="";
-		String textProd=productoService.mostrarUltimoProducto().getNombre();
+	
 		model.addAttribute(compra);
-		model.addAttribute("textProd",textProd);
-		if(productoService.obtenerListaProducto().size()==1) { // falta modificar
-		   text="No ingreso un producto";
-		   model.addAttribute("text",text);
-		}
+		model.addAttribute("productos",productoService.obtenerListaProducto());
+		model.addAttribute("clientes",clienteService.obtenerClientes());
 		
 		return "nuevacompra";
 	}
 	 
 	@PostMapping("/index/guardarCompra")
-	public ModelAndView getGuardarCompra(@ModelAttribute("compra") Compra compra) {
-		ModelAndView model = new ModelAndView("index");
-		compra.setProducto(productoService.mostrarUltimoProducto()); // falta
-		compraService.agregarCompra(compra);
-		return model;
+	public String getGuardarCompra(@ModelAttribute("compra") Compra compra,Model model) {
+		String errorCompra="";
+		Producto producto=productoService.buscarProductoID(compra.getProducto().getCodigo());
+		compra.setProducto(producto); 
+		if(compra.getCantidad()>producto.getStock()) {
+			errorCompra="No hay suficiente stock";
+			model.addAttribute(compra);
+			model.addAttribute("productos",productoService.obtenerListaProducto());
+			model.addAttribute("texto",errorCompra);
+			return "nuevacompra";
+		}else {
+			
+			compra.setTotal(producto.getPrecio()*compra.getCantidad());
+			compraService.agregarCompra(compra);
+			model.addAttribute("compras",compraService.obtenerCompras());
+			
+			return "mostrarcompra";
+		}
+		
+	
+		
+		
+		
+		
+		
 	}
 	
 	@GetMapping("/index/listadoCompra")
@@ -170,11 +189,15 @@ public class IndexController {
 	  	}
 		 
 		@GetMapping("/index/modificarCompra/{id}")
-		 public ModelAndView getModificarCompra(@PathVariable(value="id") int param) {
-			 ModelAndView model = new ModelAndView("nuevacompra");
+		 public String getModificarCompra(@PathVariable(value="id") int param,Model model) {
 			 Optional<Compra> compras = compraService.buscarCompra(param);
-			 model.addObject("compras",compras);
-			 return model;
+			 model.addAttribute("compra",compras);
+			 
+			
+			 
+			 model.addAttribute("productos",productoService.obtenerListaProducto());
+			 model.addAttribute("clientes",clienteService.obtenerClientes());
+			 return ("nuevacompra");
 	 	}
 	
 		// Controller Producto
@@ -182,15 +205,15 @@ public class IndexController {
 				 public ModelAndView getEliminarProducto(@PathVariable(value="id") int param) {
 					 ModelAndView model = new ModelAndView("mostrarprod");
 					 productoService.eliminarProducto(param);
-					 model.addObject("prod",productoService.obtenerListaProducto());
+					 model.addObject("productos",productoService.obtenerListaProducto());
 					 return model;
 			  	}
 				 
 				@GetMapping("/index/modificarProducto/{id}")
 				 public ModelAndView getModificarProducto(@PathVariable(value="id") int param) {
 					 ModelAndView model = new ModelAndView("nuevoprod");
-					 Optional<Producto> prod = productoService.buscarProducto(param);
-					 model.addObject("prod",prod);
+					 Optional<Producto> producto = productoService.buscarProducto(param);
+					 model.addObject("producto",producto);
 					 return model;
 			 	}
 	
